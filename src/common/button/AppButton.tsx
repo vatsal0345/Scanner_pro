@@ -1,0 +1,50 @@
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native';
+import React from 'react';
+import {useTheme} from '../../theme/ThemeContext';
+
+interface AppButtonProps extends TouchableOpacityProps {
+  loading?: boolean;
+  title: string;
+}
+
+const AppButton: React.FC<AppButtonProps> = ({loading, title, ...props}) => {
+  const {theme} = useTheme();
+  return (
+    <TouchableOpacity
+      style={[styles.button, {backgroundColor: theme.colors.primary}]}
+      disabled={loading}
+      {...props}>
+      {loading ? (
+        <ActivityIndicator color="#fff" />
+      ) : (
+        <Text style={styles.buttonText}>{title}</Text>
+      )}
+    </TouchableOpacity>
+  );
+};
+
+export default AppButton;
+
+const styles = StyleSheet.create({
+  button: {
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    marginTop: 10,
+  },
+
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});
