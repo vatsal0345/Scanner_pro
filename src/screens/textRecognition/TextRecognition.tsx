@@ -275,7 +275,7 @@ const HandwritingRecognition = () => {
     setBackgroundColors(colorsArray);
   };
 
-  console.log('Background Colors:', colors);
+  console.log('Background Colors: ==>', colors);
 
   return (
     <ScrollView contentContainerStyle={{padding: 20}}>
