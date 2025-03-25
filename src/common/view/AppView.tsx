@@ -5,25 +5,50 @@ import {
   StyleSheet,
   ViewProps,
   ViewStyle,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
-import { useTheme } from '../../theme/ThemeContext';
+import {useTheme} from '../../theme/ThemeContext';
 interface AppViewProps extends ViewProps {
   children: React.ReactNode;
   additionalStyles?: ViewStyle;
+  scrollable?: boolean;
 }
 
-const AppView: React.FC<AppViewProps> = ({children,additionalStyles, ...props}) => {
+const AppView: React.FC<AppViewProps> = ({
+  children,
+  additionalStyles,
+  scrollable = false,
+  ...props
+}) => {
   const {theme} = useTheme();
-  console.log('=>',theme);
-  
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View
-        style={[styles.container,{backgroundColor: theme.colors.background},{...additionalStyles}]}
-        {...props}>
-        {children}
-      </View>
+      {scrollable ? (
+        <View
+          style={[
+            styles.container,
+            {backgroundColor: theme.colors.background},
+          ]}>
+          <ScrollView
+            contentContainerStyle={[additionalStyles]}
+            showsVerticalScrollIndicator={false}
+            {...props}>
+            {children}
+          </ScrollView>
+        </View>
+      ) : (
+        <View
+          style={[
+            styles.container,
+            {backgroundColor: theme.colors.background},
+            {...additionalStyles},
+          ]}
+          {...props}>
+          {children}
+        </View>
+      )}
     </TouchableWithoutFeedback>
   );
 };

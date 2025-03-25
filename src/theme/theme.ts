@@ -4,6 +4,8 @@ const LightTheme = {
         secondary: "#2ecc71",
         background: "#ffffff",
         text: "#333333",
+        oppositbgc: "#121212",
+        red:'#D32F2F'
     },
 };
 
@@ -13,6 +15,8 @@ const DarkTheme = {
         secondary: "#e74c3c",
         background: "#121212",
         text: "#ffffff",
+        oppositbgc: "#ffffff",
+        red:'#FF5252'
     },
 };
 

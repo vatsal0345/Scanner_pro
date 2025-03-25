@@ -7,8 +7,6 @@ import AppTextInput from '../../common/textInput/AppTextInput';
 
 const HomeScreen: React.FC = () => {
   const {theme, toggleTheme} = useTheme();
-  console.log(theme);
-
   return (
     <AppView>
       <Text style={{color: theme.colors.text}}>

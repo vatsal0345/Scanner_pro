@@ -6,21 +6,38 @@ import {createStackNavigator} from '@react-navigation/stack';
 import WelcomeScreen from '../screens/welcome/WelcomeScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import TextRecognition from '../screens/textRecognition/TextRecognition';
+import ImageToPdf from '../screens/imageToPdf/ImageToPdf';
+import {useTheme} from '../theme/ThemeContext';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const MainRoutes = () => {
+  const {theme} = useTheme();
+
   const privateTabRoutes = () => {
     return (
       <Tab.Navigator
         initialRouteName="textRecognition"
         screenOptions={({route}) => ({
-          tabBarIcon: () => {
+          tabBarInactiveBackgroundColor: theme.colors.background,
+          tabBarActiveBackgroundColor: theme.colors.background,
+          tabBarActiveTintColor: theme.colors.primary,
+          tabBarIcon: ({focused}) => {
             let icon;
             if (route.name === 'Home') {
               icon = 'home';
+            } else if (route.name === 'textRecognition') {
+              icon = 'font';
+            } else if (route.name === 'imageToPdf') {
+              icon = 'file-pdf-o';
             }
-            return <Icon name={'up'} size={30} color="red" />;
+            return (
+              <Icon
+                name={icon}
+                size={25}
+                color={focused ? theme.colors.primary : '#999'}
+              />
+            );
           },
         })}>
         <Tab.Screen
@@ -31,6 +48,11 @@ const MainRoutes = () => {
         <Tab.Screen
           name="textRecognition"
           component={TextRecognition}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="imageToPdf"
+          component={ImageToPdf}
           options={{headerShown: false}}
         />
       </Tab.Navigator>
