@@ -6,10 +6,11 @@ import {
   useMemo,
   useState,
 } from 'react';
-import {LightTheme, ThemeType, DarkTheme} from './theme';
+import {LightTheme, ThemeType, DarkTheme, ColorType} from './theme';
 import {useColorScheme} from 'react-native';
 interface ThemeContextType {
   theme: ThemeType;
+  COLORS: ColorType;
   toggleTheme: () => void;
 }
 
@@ -23,16 +24,21 @@ const ThemeProvider: React.FC<{children: ReactNode}> = ({children}) => {
   );
 
   const toggleTheme = () => {
-    setTheme(perviousTheme =>
-      perviousTheme === LightTheme ? DarkTheme : LightTheme,
-    );
+    setTheme(prevTheme => (prevTheme === LightTheme ? DarkTheme : LightTheme));
   };
 
   useEffect(() => {
     setTheme(systemTheme === 'dark' ? DarkTheme : LightTheme);
   }, [systemTheme]);
 
-  const value = useMemo(() => ({theme, toggleTheme}), [theme]);
+  const value = useMemo(
+    () => ({
+      theme,
+      COLORS: theme.colors,
+      toggleTheme,
+    }),
+    [theme],
+  );
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

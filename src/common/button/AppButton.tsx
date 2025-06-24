@@ -14,10 +14,10 @@ interface AppButtonProps extends TouchableOpacityProps {
 }
 
 const AppButton: React.FC<AppButtonProps> = ({loading, title, ...props}) => {
-  const {theme} = useTheme();
+  const {COLORS} = useTheme();
   return (
     <TouchableOpacity
-      style={[styles.button, {backgroundColor: theme.colors.primary}]}
+      style={[styles.button, {backgroundColor: COLORS.primary}]}
       disabled={loading}
       {...props}>
       {loading ? (

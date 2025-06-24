@@ -12,16 +12,16 @@ import {useTheme} from '../theme/ThemeContext';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const MainRoutes = () => {
-  const {theme} = useTheme();
+  const {COLORS} = useTheme();
 
   const privateTabRoutes = () => {
     return (
       <Tab.Navigator
         initialRouteName="textRecognition"
         screenOptions={({route}) => ({
-          tabBarInactiveBackgroundColor: theme.colors.background,
-          tabBarActiveBackgroundColor: theme.colors.background,
-          tabBarActiveTintColor: theme.colors.primary,
+          tabBarInactiveBackgroundColor: COLORS.background,
+          tabBarActiveBackgroundColor: COLORS.background,
+          tabBarActiveTintColor: COLORS.primary,
           tabBarIcon: ({focused}) => {
             let icon;
             if (route.name === 'Home') {
@@ -35,7 +35,7 @@ const MainRoutes = () => {
               <Icon
                 name={icon}
                 size={25}
-                color={focused ? theme.colors.primary : '#999'}
+                color={focused ? COLORS.primary : '#999'}
               />
             );
           },

@@ -19,16 +19,19 @@
     "react": "^18.3.1",
     "react-native": "^0.77.1",
     "react-native-fast-image": "^8.6.3",
+    "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.23.0",
     "react-native-image-picker": "^8.2.0",
     "react-native-image-zoom-viewer": "^3.0.1",
     "react-native-images-to-pdf": "^0.2.1",
+    "react-native-mlkit-ocr": "^0.3.0",
     "react-native-permissions": "^5.2.6",
     "react-native-safe-area-context": "^5.2.0",
+    "react-native-scoped-storage": "^1.6.0",
     "react-native-screens": "^4.6.0",
+    "react-native-share": "^12.1.0",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-worklets-core": "^1.5.0",
-    "Scanner_pro": "file:"
+    "react-native-worklets-core": "^1.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

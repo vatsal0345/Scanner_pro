@@ -1,17 +1,15 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 import {useTheme} from '../../theme/ThemeContext';
 import AppView from '../../common/view/AppView';
 import AppButton from '../../common/button/AppButton';
 import AppTextInput from '../../common/textInput/AppTextInput';
 
 const HomeScreen: React.FC = () => {
-  const {theme, toggleTheme} = useTheme();
+  const {COLORS, toggleTheme} = useTheme();
   return (
     <AppView>
-      <Text style={{color: theme.colors.text}}>
-        Welcome to the Home Screen!
-      </Text>
+      <Text style={{color: COLORS.text}}>Welcome to the Home Screen!</Text>
       <AppTextInput placeholder="Search..."></AppTextInput>
       <AppButton title="Toggle Theme" onPress={toggleTheme} />
     </AppView>

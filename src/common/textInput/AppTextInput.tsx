@@ -1,13 +1,11 @@
-import {StyleSheet, Text, TextInput, TextInputProps, View} from 'react-native';
+import {StyleSheet, TextInput, TextInputProps} from 'react-native';
 import React from 'react';
 import {useTheme} from '../../theme/ThemeContext';
 
 interface AppTextInputProps extends TextInputProps {}
 const AppTextInput: React.FC<AppTextInputProps> = ({...props}) => {
-  const {theme} = useTheme();
-  return (
-    <TextInput {...props} style={[styles.input, {color: theme.colors.text}]} />
-  );
+  const {COLORS} = useTheme();
+  return <TextInput {...props} style={[styles.input, {color: COLORS.text}]} />;
 };
 
 export default AppTextInput;

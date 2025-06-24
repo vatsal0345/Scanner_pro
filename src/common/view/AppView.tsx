@@ -21,16 +21,12 @@ const AppView: React.FC<AppViewProps> = ({
   scrollable = false,
   ...props
 }) => {
-  const {theme} = useTheme();
+  const {COLORS} = useTheme();
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       {scrollable ? (
-        <View
-          style={[
-            styles.container,
-            {backgroundColor: theme.colors.background},
-          ]}>
+        <View style={[styles.container, {backgroundColor: COLORS.background}]}>
           <ScrollView
             contentContainerStyle={[additionalStyles]}
             showsVerticalScrollIndicator={false}
@@ -42,7 +38,7 @@ const AppView: React.FC<AppViewProps> = ({
         <View
           style={[
             styles.container,
-            {backgroundColor: theme.colors.background},
+            {backgroundColor: COLORS.background},
             {...additionalStyles},
           ]}
           {...props}>

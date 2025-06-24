@@ -1,4 +1,4 @@
-import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Modal, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,7 +15,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
   onPress,
   imagePress,
 }) => {
-  const {theme} = useTheme();
+  const {COLORS} = useTheme();
   const [isViewerVisible, setViewerVisible] = useState(false);
 
   const handleImagePress = () => {
@@ -24,14 +24,12 @@ const ImageCard: React.FC<ImageCardProps> = ({
 
   return (
     <View style={styles.outerContainer}>
-      <Icon
-        name={'close'}
-        size={10}
-        style={[styles.close, {backgroundColor: theme.colors.red}]}
-        onPress={onPress}></Icon>
+      <View style={[styles.close, {backgroundColor: COLORS.red}]}>
+        <Icon name={'close'} size={10} onPress={onPress} />
+      </View>
       <TouchableOpacity
         onPress={handleImagePress}
-        style={[styles.container, {backgroundColor: theme.colors.oppositbgc}]}>
+        style={[styles.container, {backgroundColor: COLORS.oppositbgc}]}>
         <FastImage source={{uri: imageUri}} style={styles.image} />
       </TouchableOpacity>
       {imagePress && (
@@ -54,9 +52,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     right: 0,
-    padding: 5,
     borderRadius: 100,
     zIndex: 100,
+    height: 15,
+    width: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   container: {padding: 2, borderRadius: 12},
   image: {

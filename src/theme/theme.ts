@@ -37,7 +37,7 @@ const Spacing = {
         bold: 700,
     }
 };
-
+export type ColorType = typeof LightTheme.colors;
 export type ThemeType = typeof LightTheme;
 export type SpacingType = typeof Spacing;
 export { DarkTheme, LightTheme };
